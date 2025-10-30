@@ -3,13 +3,13 @@
 </p>
 
 
-<h1 align="center">🧪 Comprehensive Web Application Performance Testing & Analysis</h1>
+<h1 align="center">💻 Comprehensive Web Application Performance Testing & Analysis</h1>
 
 <p align="center">
-  <strong>Author:</strong> Badrisha Aaina <br>
-  <strong>Student ID:</strong> [Insert ID Here] <br>
-  <strong>Group:</strong> [Insert Group Here] <br>
-  <strong>Course:</strong> ITT440 – Web Application Performance Testing
+  <strong>Author:</strong> AINA BADRISHA BINTI ZAMRI <br>
+  <strong>Student ID:</strong> 2025197759 <br>
+  <strong>Group:</strong> M3CS2554C <br>
+  <strong>Course:</strong> ITT440 – NETWORK PROGRAMMING
 </p>
 
 ---
