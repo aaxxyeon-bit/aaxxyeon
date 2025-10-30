@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/aaxxyeon-bit/images/refs/heads/main/dark_tech.jpg" alt="Dark Tech Banner" width="1000"/>
+</p>
+
+
 <h1 align="center">🧪 Comprehensive Web Application Performance Testing & Analysis</h1>
 
 <p align="center">
