@@ -1,7 +1,11 @@
-# 🚀 Comprehensive Web Application Performance Testing & Analysis  
-**Author:** Badrisha Aaina  
-**Student ID:** [Insert ID here]  
-**Group:** [Insert Group Here]  
+<h1 align="center">🧪 Comprehensive Web Application Performance Testing & Analysis</h1>
+
+<p align="center">
+  <strong>Author:</strong> Badrisha Aaina <br>
+  <strong>Student ID:</strong> [Insert ID Here] <br>
+  <strong>Group:</strong> [Insert Group Here] <br>
+  <strong>Course:</strong> ITT440 – Web Application Performance Testing
+</p>
 
 ---
 
