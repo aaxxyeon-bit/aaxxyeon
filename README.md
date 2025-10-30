@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/aaxxyeon-bit/images/refs/heads/main/dark_tech.jpg" alt="Dark Tech Banner" width="1000"/>
+  <img src="https://raw.githubusercontent.com/aaxxyeon-bit/images/refs/heads/main/dark_tech.jpg" alt="Dark Tech Banner" width="2000"/>
 </p>
 
 
