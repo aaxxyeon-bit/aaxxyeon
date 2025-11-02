@@ -240,4 +240,93 @@ export default function () {
   });
 }
 ```
+<br>
+
+---
+
+## 🧾 7. Results & Analysis
+
+This section presents and analyzes the outcomes of the scalability test executed in two environments:
+
+1. **Local CLI Execution (Max 500 VUs)**  
+2. **Grafana Cloud Execution (Max 100 VUs)**  
+
+Both tests evaluated BlazeDemo’s performance stability as the number of virtual users (VUs) increased gradually.
+
+
+### <ins>**(A) Local Execution — 500 VUs (CLI)**<ins>
+
+--> This test was executed locally using the k6 CLI and allowed a maximum of 500 virtual users.  
+--> The goal was to identify the upper scalability limit of the BlazeDemo site without external restrictions.
+
+**📊 Summary of Key Metrics**
+
+| **Metric** | **Result** |
+|-------------|------------|
+| **95th Percentile Response Time** | 592.7 ms |
+| **Average Response Time** | 395.9 ms |
+| **Maximum Response Time** | 3.69 s |
+| **HTTP Request Failed** | 0.00% |
+| **Total Requests Made** | 102,890 |
+| **Data Received** | 620 MB |
+| **Average Iteration Duration** | 4.3 s |
+| **Thresholds** | ✅ `p(95)<1500ms` and `rate<0.05` passed |
+
+**🧠 Analysis**
+
+- The system successfully handled **up to 500 concurrent users** without breaching the performance thresholds.  
+- **Average response time (~396 ms)** and **p(95) response time (~593 ms)** indicate strong backend stability.  
+- **No request failures** were recorded, suggesting excellent server reliability under load.  
+- The increasing **iteration duration** (up to 6 s at the 95th percentile) shows that response time gradually grows as VUs ramp up, but remains acceptable within limits.  
+- This confirms that **BlazeDemo scales effectively** up to 500 users locally.
+
+**📷 CLI Execution Output:**
+
+> *(Insert your terminal screenshot here — example below)*  
+> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/k6_terminal_run.png?raw=true)
+
+---
+
+### **(B) Grafana Cloud Execution — 100 VUs**
+
+This version was executed using **Grafana Cloud’s k6 platform**, which has a **maximum limit of 100 concurrent VUs**.  
+It visualizes results in real time through Grafana dashboards.
+
+**📊 Summary of Key Metrics**
+
+| **Metric** | **Result** |
+|-------------|------------|
+| **Requests Made** | 22.6K |
+| **HTTP Failures** | 4 |
+| **Peak Requests per Second (RPS)** | 52.83 req/s |
+| **95th Percentile Response Time** | 2,556 ms |
+| **Max VUs** | 100 |
+
+**🧠 Analysis**
+
+- The performance was **stable up to 100 users**, though **p(95) response time (~2.5s)** is notably higher than in the local run.  
+- The **slight increase in response latency** may result from network distance, cloud infrastructure overhead, or Grafana’s shared environment.  
+- Despite 4 HTTP failures, the **failure rate remained minimal (≈0.018%)**, indicating consistent performance reliability.  
+- The **Peak RPS (52.83)** reflects efficient request throughput even at higher load stages.  
+- The visualization clearly shows a correlation between VU ramp-up and request rate, demonstrating the scalability behavior under cloud monitoring.
+
+**📷 Grafana Cloud Dashboard Visualization:**
+
+> ![Grafana Scalability Chart](https://github.com/aaxxyeon-bit/images/blob/main/k6_grafana_scalability.png?raw=true)
+
+---
+
+### **📈 Comparative Insights**
+
+| **Aspect** | **Local (500 VUs)** | **Grafana Cloud (100 VUs)** |
+|-------------|---------------------|------------------------------|
+| **Max Concurrent Users** | 500 | 100 |
+| **Average Response Time** | 395.9 ms | ~2.5 s |
+| **Failures** | 0 | 4 |
+| **RPS (Peak)** | ~95 req/s | 52.83 req/s |
+| **Environment** | Local machine | Grafana Cloud |
+| **Visualization** | CLI metrics | Real-time dashboard |
+| **Scalability Observation** | Excellent up to 500 users | Stable under 100 users but higher latency |
+
+---
 
