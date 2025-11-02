@@ -61,7 +61,7 @@ This powerful visualization made it easier to observe system behavior, identify 
          width="800px"/>
   </a>
   <br/>
-  <sub>Terminal running <code>k6 run blazedemo_scalability_test.js</code> — click image to view in full size.</sub>
+  <sub>Figure 1: Terminal running <code>k6 run blazedemo_scalability_test.js</code> — click image to view in full size.</sub>
 </p>
 
 ---
@@ -254,7 +254,7 @@ This section presents and analyzes the outcomes of the scalability test executed
 Both tests evaluated BlazeDemo’s performance stability as the number of virtual users (VUs) increased gradually.<br><br>
 
 
-### <ins>**(A) Local Execution — 500 VUs (CLI)**<ins>
+### **(A) Local Execution — 500 VUs (CLI)**
 
 --> This test was executed locally using the k6 CLI and allowed a maximum of 500 virtual users.  
 --> The goal was to identify the upper scalability limit of the BlazeDemo site without external restrictions.
@@ -283,13 +283,33 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 - This confirms that BlazeDemo scales effectively up to 500 users locally.<br><br>
 
 **📷 CLI Execution Output:**
+
+<p align="center">
+  <a href="https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true" target="_blank">
+    <img src="https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true" 
+         alt="Terminal output showing scalability test up to 500 VUs executed locally using k6 CLI" 
+         width="800px"/>
+  </a>
+  <br/>
+  <sub>Figure 2: Terminal output showing scalability test up to 500 VUs executed locally using k6 CLI — click image to view in full size.</sub>
+</p>
+
+<br><br>
+
+<p align="center">
+  <a href="https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500%202.png?raw=true" target="_blank">
+    <img src="https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500%202.png?raw=true" 
+         alt="Terminal output showing scalability test up to 500 VUs executed locally using k6 CLI" 
+         width="800px"/>
+  </a>
+  <br/>
+  <sub>Figure 3: Terminal output showing scalability test up to 500 VUs executed locally using k6 CLI — click image to view in full size.</sub>
+</p>
+
+<br><br>
  
-> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true)
-> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500%202.png?raw=true)
 
----
-
-### <ins>**(B) Grafana Cloud Execution — 100 VUs**</ins>
+### **(B) Grafana Cloud Execution — 100 VUs**
 
 --> This version was executed using Grafana Cloud’s k6 platform, which has a maximum limit of 100 concurrent VUs.  
 --> It visualizes results in real time through Grafana dashboards.
@@ -320,7 +340,7 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 
 <br><br>
 
-### <ins>**📈 Comparative Insights**</ins>
+### **📈 Comparative Insights**
 
 | **Aspect** | **Local (500 VUs)** | **Grafana Cloud (100 VUs)** |
 |-------------|---------------------|------------------------------|
