@@ -14,22 +14,22 @@
 
 ---
 
-## 🧩 1. Introduction  
+## 🧩 1. Introduction
 
 
 ### <ins>Objective</ins>  
-The purpose of this project is to **design, execute, and critically analyze a performance test plan** for a real-world web application using **Grafana k6**. The test aims to evaluate the **scalability and stability** of the target web application and identifying potential bottlenecks under varying user loads.
+The purpose of this project is to **design, execute, and critically analyze a performance test plan** for a real-world web application using **Grafana k6**. The test aims to evaluate the **scalability and stability** of the target web application and identifying potential bottlenecks under varying user loads.<br><br>
 
 
 ### 🌐 <ins>Target Web Application</ins>  
 **Target Website:** BlazeDemo [https://blazedemo.com](https://blazedemo.com)  
-BlazeDemo is a public simple flight booking demonstration site often used for testing purposes. It simulates typical web functionalities such as form submission, page navigation, and dynamic content rendering. The site is designed for non-destructive testing and educational use, making it an ethical and legal choice for performance evaluation.
+BlazeDemo is a public simple flight booking demonstration site often used for testing purposes. It simulates typical web functionalities such as form submission, page navigation, and dynamic content rendering. The site is designed for non-destructive testing and educational use, making it an ethical and legal choice for performance evaluation.<br><br>
 
 
 ###  <ins>Hypothesis</ins>  
 It is hypothesized that **BlazeDemo** can handle moderate user loads (up to 100 concurrent users) with stable response times. However, beyond this threshold, the application may begin to experience **performance degradation** due to limited server capacity or backend response delays.
 
----
+--- 
 
 ## ⚙️ 2. Tool Selection Justification  
 
@@ -45,10 +45,12 @@ It is hypothesized that **BlazeDemo** can handle moderate user loads (up to 100 
 | 5 | Automation & CI/CD Ready | Can be easily integrated into automated pipelines for continuous performance testing. |
 | 6 | Lightweight Design | Minimal resource usage, ideal for testing APIs and lightweight web applications. |
 
+<br>
+
 ### 🔧 <ins>Supporting Tool: Grafana Cloud Dashboard</ins> 
 Grafana Cloud Dashboard is used to visualize the performance testing results from k6.  
 Grafana provides clear and interactive visual insights into key metrics such as request duration, virtual user (VU) ramp-up patterns, and pass/fail thresholds.  
-This powerful visualization made it easier to observe system behavior, identify performance bottlenecks, and understand trends over time through detailed charts and dashboards.
+This powerful visualization made it easier to observe system behavior, identify performance bottlenecks, and understand trends over time through detailed charts and dashboards.<br><br>
 
 ###  <ins>Screenshot: Terminal Running k6 (BlazeDemo Scalability Test)</ins>
 
@@ -61,6 +63,23 @@ This powerful visualization made it easier to observe system behavior, identify 
   <br/>
   <sub>Terminal running <code>k6 run blazedemo_scalability_test.js</code> — click image to view in full size.</sub>
 </p>
+
+---
+
+## 🧩 Test Type & Justification
+
+
+### <ins>Selected Test Type: **Scalability Test**</ins>
+
+A scalability test gradually increases user load to identify the point where performance metrics begin to degrade.  
+This testing type helps determine the maximum capacity of a system before its performance becomes unacceptable. Scalability 
+testing focuses on understanding growth thresholds and how performance changes as users increase progressively.<br><br>
+
+### 🧠 <ins>Justification</ins>
+
+Since BlazeDemo simulates a real-world flight booking website, it’s important to analyze how its performance scales  
+with increasing concurrent users. This test helps evaluate how efficiently the backend handles increasing traffic over time  
+and whether the system remains stable, responsive, and efficient as user demand grows.
 
 ---
 
