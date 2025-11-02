@@ -3,45 +3,52 @@
 </p>
 
 
-<h1 align="center">💻 Comprehensive Web Application Performance Testing & Analysis</h1>
+<h1 align="center">💻 Comprehensive Web Application Performance Testing & Analysis using Grafana k6 on BlazeDemo</h1>
 
 <p align="center">
-  <strong>Author:</strong> AINA BADRISHA BINTI ZAMRI <br>
-  <strong>Student ID:</strong> 2025197759 <br>
-  <strong>Group:</strong> M3CS2554C <br>
-  <strong>Course:</strong> ITT440 – NETWORK PROGRAMMING
+  <strong>AUTHOR :</strong> AINA BADRISHA BINTI ZAMRI <br>
+  <strong>STUDENT ID :</strong> 2025197759 <br>
+  <strong>GROUP :</strong> M3CS2554C <br>
+  <strong>COURSE :</strong> ITT440 – NETWORK PROGRAMMING
 </p>
 
 ---
 
 ## 🧩 1. Introduction  
 
-### 🎯 Objective  
-The purpose of this project is to **design, execute, and critically analyze a performance test plan** for a real-world web application using **Grafana k6**. The test aims to assess the **scalability and stability** of the target web application, identifying potential bottlenecks under varying user loads.
 
-### 🌐 Target Web Application  
-**Website:** [https://blazedemo.com](https://blazedemo.com)  
-BlazeDemo is a simple flight booking demonstration site often used for testing purposes. It simulates typical web functionalities such as form submission, page navigation, and dynamic content rendering.
+### <ins>Objective</ins>  
+The purpose of this project is to **design, execute, and critically analyze a performance test plan** for a real-world web application using **Grafana k6**. The test aims to evaluate the **scalability and stability** of the target web application and identifying potential bottlenecks under varying user loads.
 
-### 🧠 Hypothesis  
+
+### 🌐 <ins>Target Web Application</ins>  
+**Target Website:** BlazeDemo [https://blazedemo.com](https://blazedemo.com)  
+BlazeDemo is a public simple flight booking demonstration site often used for testing purposes. It simulates typical web functionalities such as form submission, page navigation, and dynamic content rendering. The site is designed for non-destructive testing and educational use, making it an ethical and legal choice for performance evaluation.
+
+
+###  <ins>Hypothesis</ins>  
 It is hypothesized that **BlazeDemo** can handle moderate user loads (up to 100 concurrent users) with stable response times. However, beyond this threshold, the application may begin to experience **performance degradation** due to limited server capacity or backend response delays.
 
 ---
 
 ## ⚙️ 2. Tool Selection Justification  
 
-### 🧰 Tool: Grafana k6  
-**k6** is a modern, developer-centric load and performance testing tool built for both **local and cloud-based execution**. It was chosen for the following reasons:
+###  <ins>Selected Tool: Grafana k6 CLI</ins>
+**k6** is a modern, developer-centric load and performance testing tool built for both local and cloud-based execution. It was chosen for the following reasons:
 
-| Feature | Reason for Selection |
-|----------|---------------------|
-| 🧑‍💻 Scripting in JavaScript | Easy to customize and integrate in VS Code |
-| ☁️ Grafana Cloud Integration | Allows real-time visualization and result tracking |
-| 📊 Metrics & Thresholds | Supports response time, throughput, error rate, and custom KPIs |
-| 🧱 Scalability Support | Suitable for simulating realistic load tests |
+| No. | 🧩 **Feature** | 💡 **Reason for Selection** |
+|:---:|:----------------:|:----------------------------:|
+| 1 | Open-source & Developer-friendly | Freely available and highly customizable for performance testing without license cost. |
+| 2 | Scriptable in JavaScript | Enables writing realistic user scenarios using a language familiar to most developers. |
+| 3 | CLI & Cloud Options | Offers both local command-line and Grafana Cloud execution modes for flexibility. |
+| 4 | Grafana Integration | Provides seamless visualization and monitoring of real-time metrics via Grafana dashboards. |
+| 5 | Automation & CI/CD Ready | Can be easily integrated into automated pipelines for continuous performance testing. |
+| 6 | Lightweight Design | Minimal resource usage, ideal for testing APIs and lightweight web applications. |
 
-### 🔧 Supporting Tool: Grafana Cloud Dashboard  
-Grafana Cloud provides visual insights into performance metrics such as request duration, VU ramp-up patterns, and pass/fail thresholds. This integration helps in better understanding system behavior over time.
+### 🔧 <ins>Supporting Tool: Grafana Cloud Dashboard</ins> 
+Grafana Cloud Dashboard is used to visualize the performance testing results from k6.  
+Grafana provides clear and interactive visual insights into key metrics such as request duration, virtual user (VU) ramp-up patterns, and pass/fail thresholds.  
+This powerful visualization made it easier to observe system behavior, identify performance bottlenecks, and understand trends over time through detailed charts and dashboards.
 
 ---
 
