@@ -386,16 +386,6 @@ At the high load stage (100 VUs), resource utilization peaked — CPU usage clim
 
 Finally, during the cool-down stage, as virtual users ramped down, both CPU and memory usage dropped sharply back to baseline levels (≈30% CPU and ≈200 MB RAM), confirming no residual memory leaks or abnormal resource retention after test completion.
 
-**🧠 Interpretation:**
-
-- The CPU and memory utilization patterns show that the system scaled efficiently with increasing virtual users.
-- The peak values (80% CPU, 310 MB RAM) remained below critical thresholds, indicating adequate processing capacity and resource stability under sustained load.
-- The smooth rise and fall of both curves suggest the load generator and target application maintained consistent performance throughout the test.
-- No irregular spikes or plateauing were observed, implying effective garbage collection and balanced workload distribution.
-
-**Conclusion:**
-
-Overall, the CPU and memory usage trends validate that the scalability test was properly executed and that the system resources were sufficient to handle the 100 VU load without any sign of saturation, bottlenecking, or instability.
 
 <br><br>
 
@@ -432,6 +422,60 @@ Overall, the CPU and memory usage trends validate that the scalability test was 
 
 ---
 
+## 🧭 8. Recommendations Based on Industry Best Practices
 
+Based on the scalability test outcomes and performance analysis, several optimization recommendations can be made to improve system resilience, scalability, and long-term efficiency.
+
+### ⚙️ <ins>Performance Optimization</ins>
+- **Enable caching mechanisms** (e.g., CDN, in-memory caching such as Redis) to reduce repetitive HTTP requests and response latency.  
+- **Optimize backend queries** by reducing database round trips and indexing frequently accessed data.  
+- **Implement connection pooling** to manage multiple simultaneous database or API requests efficiently.<br> 
+
+### 📈 <ins>Testing & Monitoring Improvements</ins>
+- **Integrate continuous performance testing** into CI/CD pipelines using Grafana k6 Cloud for consistent monitoring and early detection of bottlenecks.  
+- **Set automated thresholds** (for p95 latency, error rate, throughput) to trigger alerts when performance drifts occur.  
+- **Correlate infrastructure metrics** (CPU, memory, and network I/O) with response time to locate root causes faster.<br>
+
+### ☁️ <ins>Scalability & Infrastructure</ins>
+- **Adopt horizontal scaling** (e.g., adding more application instances) when load exceeds safe CPU/memory thresholds.  
+- **Utilize load balancers** to distribute requests evenly across multiple servers.  
+- **Leverage containerization** (e.g., Docker, Kubernetes) for efficient resource allocation and dynamic scaling.<br>  
+
+### 🔒 <ins>Reliability & Security</ins>
+- Regularly perform **stress and endurance testing** alongside scalability tests to identify hidden bottlenecks under sustained load.  
+- Ensure **secure API configurations** and TLS encryption to maintain integrity during high-traffic conditions.  
+- Follow **DevSecOps best practices** by including security validation in every performance testing cycle.<br>
+
+---
+
+## 🏁 9. Conclusion
+
+The scalability testing of **BlazeDemo** using **Grafana k6 CLI and Cloud** successfully demonstrated the system’s ability to maintain consistent performance under increasing load.  
+
+- The **local 500-VU test** validated the upper threshold of system performance, confirming stable response times (p95 < 600 ms) and **zero request failures**.  
+- The **Grafana Cloud 100-VU test**, visualized through real-time dashboards, reinforced the findings with a **peak RPS of 52.83** and a **95th-percentile response time of 2.5 s**, still within acceptable limits.  
+- CPU and memory utilization graphs indicated **proportional scalability** and **no resource saturation**, reflecting efficient system behavior.  
+
+From an industry perspective, BlazeDemo displayed robust scalability characteristics. However, implementing caching, optimizing database queries, and integrating automated monitoring would further enhance reliability and efficiency.  
+
+Overall, the experiment confirms that the system can **scale gracefully**, handle growth predictably, and sustain acceptable performance without significant degradation — meeting the objectives of this scalability test.
+
+---
+
+## 🎥 10. Video Demonstration
+
+📽️ *A walkthrough video of the test setup, execution, and Grafana visualization will be added here.*
+
+**➡️ [Watch the Demonstration Video](https://github.com/aaxxyeon-bit/blazedemo_scalability_test)** 
+
+---
+
+## 📚 11. References
+
+- Grafana Labs. (2024). *k6 Open Source Load Testing Tool.* Retrieved from [https://k6.io](https://k6.io)  
+- Grafana Labs Documentation. (2024). *k6 Cloud Insights.* Retrieved from [https://grafana.com/docs/k6/](https://grafana.com/docs/k6/)  
+- BlazeDemo. (n.d.). *Sample Web Application for Load Testing.* Retrieved from [https://blazedemo.com](https://blazedemo.com)  
+- Microsoft Azure Architecture Center. (2023). *Performance Efficiency Checklist.* Retrieved from [https://learn.microsoft.com/en-us/azure/architecture/framework/scalability](https://learn.microsoft.com/en-us/azure/architecture/framework/scalability)  
+- Google Cloud. (2024). *Best Practices for Load Testing Web Applications.* Retrieved from [https://cloud.google.com/architecture](https://cloud.google.com/architecture)  
 
 
