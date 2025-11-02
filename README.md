@@ -50,6 +50,18 @@ Grafana Cloud Dashboard is used to visualize the performance testing results fro
 Grafana provides clear and interactive visual insights into key metrics such as request duration, virtual user (VU) ramp-up patterns, and pass/fail thresholds.  
 This powerful visualization made it easier to observe system behavior, identify performance bottlenecks, and understand trends over time through detailed charts and dashboards.
 
+###  <ins>Screenshot: Terminal Running k6 (BlazeDemo Scalability Test)</ins>
+
+<p align="center">
+  <a href="https://github.com/aaxxyeon-bit/images/blob/main/k6_terminal_run.png?raw=true" target="_blank">
+    <img src="https://github.com/aaxxyeon-bit/images/blob/main/k6_terminal_run.png?raw=true" 
+         alt="Terminal running Grafana k6 scalability test for BlazeDemo website" 
+         width="800px"/>
+  </a>
+  <br/>
+  <sub>Terminal running <code>k6 run blazedemo_scalability_test.js</code> — click image to view in full size.</sub>
+</p>
+
 ---
 
 ## 🧪 3. Test Environment Setup  
