@@ -336,7 +336,15 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 
 **📷 Grafana Cloud Dashboard Visualization:**
 
-> ![Grafana Scalability Chart](https://github.com/aaxxyeon-bit/images/blob/main/k6_grafana_scalability.png?raw=true)
+<p align="center">
+  <a href="https://github.com/aaxxyeon-bit/images/blob/main/Screenshot%202025-11-03%20005936.png?raw=true" target="_blank">
+    <img src="https://github.com/aaxxyeon-bit/images/blob/main/Screenshot%202025-11-03%20005936.png?raw=true" 
+         alt="Grafana Cloud visualization of the scalability test (up to 100 VUs)." 
+         width="800px"/>
+  </a>
+  <br/>
+  <sub>Figure 4: Grafana Cloud visualization of the scalability test (up to 100 VUs). — click image to view in full size.</sub>
+</p>
 
 <br><br>
 
