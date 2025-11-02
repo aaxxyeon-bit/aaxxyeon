@@ -251,7 +251,7 @@ This section presents and analyzes the outcomes of the scalability test executed
 1. **Local CLI Execution (Max 500 VUs)**  
 2. **Grafana Cloud Execution (Max 100 VUs)**  
 
-Both tests evaluated BlazeDemo’s performance stability as the number of virtual users (VUs) increased gradually.
+Both tests evaluated BlazeDemo’s performance stability as the number of virtual users (VUs) increased gradually.<br><br>
 
 
 ### <ins>**(A) Local Execution — 500 VUs (CLI)**<ins>
@@ -272,26 +272,27 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 | **Average Iteration Duration** | 4.3 s |
 | **Thresholds** | ✅ `p(95)<1500ms` and `rate<0.05` passed |
 
+<br>
+
 **🧠 Analysis**
 
 - The system successfully handled up to 500 concurrent users without breaching the performance thresholds.  
 - Average response time (~396 ms) and p(95) response time (~593 ms) indicate strong backend stability.  
 - No request failures were recorded so it's suggesting excellent server reliability under load.  
 - The increasing iteration duration (up to 6 s at the 95th percentile) shows that response time gradually grows as VUs ramp up but remains acceptable within limits.  
-- This confirms that BlazeDemo scales effectively up to 500 users locally.
+- This confirms that BlazeDemo scales effectively up to 500 users locally.<br><br>
 
 **📷 CLI Execution Output:**
-
-> *(Insert your terminal screenshot here — example below)*  
+ 
 > ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true)
-> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true)
+> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500%202.png?raw=true)
 
 ---
 
-### **(B) Grafana Cloud Execution — 100 VUs**
+### <ins>**(B) Grafana Cloud Execution — 100 VUs**</ins>
 
-This version was executed using **Grafana Cloud’s k6 platform**, which has a **maximum limit of 100 concurrent VUs**.  
-It visualizes results in real time through Grafana dashboards.
+--> This version was executed using Grafana Cloud’s k6 platform, which has a maximum limit of 100 concurrent VUs.  
+--> It visualizes results in real time through Grafana dashboards.
 
 **📊 Summary of Key Metrics**
 
@@ -303,21 +304,23 @@ It visualizes results in real time through Grafana dashboards.
 | **95th Percentile Response Time** | 2,556 ms |
 | **Max VUs** | 100 |
 
+<br>
+
 **🧠 Analysis**
 
-- The performance was **stable up to 100 users**, though **p(95) response time (~2.5s)** is notably higher than in the local run.  
-- The **slight increase in response latency** may result from network distance, cloud infrastructure overhead, or Grafana’s shared environment.  
-- Despite 4 HTTP failures, the **failure rate remained minimal (≈0.018%)**, indicating consistent performance reliability.  
-- The **Peak RPS (52.83)** reflects efficient request throughput even at higher load stages.  
-- The visualization clearly shows a correlation between VU ramp-up and request rate, demonstrating the scalability behavior under cloud monitoring.
+- The performance was stable up to 100 users although p(95) response time (~2.5s) is notably higher than in the local run.  
+- The slight increase in response latency may result from network distance, cloud infrastructure overhead or Grafana’s shared environment.  
+- Despite 4 HTTP failures, the failure rate remained minimal (≈0.018%) which indicate consistent performance reliability.  
+- The Peak RPS (52.83) reflects efficient request throughput even at higher load stages.  
+- The visualization clearly shows a correlation between VU ramp-up and request rate, demonstrating the scalability behavior under cloud monitoring.<br><br>
 
 **📷 Grafana Cloud Dashboard Visualization:**
 
 > ![Grafana Scalability Chart](https://github.com/aaxxyeon-bit/images/blob/main/k6_grafana_scalability.png?raw=true)
 
----
+<br><br>
 
-### **📈 Comparative Insights**
+### <ins>**📈 Comparative Insights**</ins>
 
 | **Aspect** | **Local (500 VUs)** | **Grafana Cloud (100 VUs)** |
 |-------------|---------------------|------------------------------|
