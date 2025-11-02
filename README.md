@@ -365,8 +365,8 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 
 ### ⚙️ 7.4 Resource Utilization Analysis
 
-To complement the performance metrics, CPU and memory usage were monitored during executions.  
-The line chart below illustrates the CPU usage trend during the test execution.<br><br>
+- To complement the performance metrics, CPU and memory usage were monitored during executions.  
+- The line chart below illustrates the CPU usage trend during the test execution.<br><br>
 
 <p align="center">
   <a href="https://github.com/aaxxyeon-bit/images/blob/main/CPU_CHART.png?raw=true" target="_blank">
@@ -375,9 +375,59 @@ The line chart below illustrates the CPU usage trend during the test execution.<
          width="800px"/>
   </a>
   <br/>
-  <sub>Figure 5: CPU performance chart showing system resource utilization during scalability test. — click image to view in full size.</sub>
+  <sub>Figure 5: Load-Generator CPU & Memory during 100 VUs Scalability Test. — click image to view in full size.</sub>
 </p>
 
+<br><br>
+
+During the warm-up phase, CPU usage started around 15%, with memory consumption at approximately 170 MB as the test initialized and virtual users (VUs) began connecting. As the load transitioned into the small and medium load stages, both CPU and memory utilization increased steadily, reaching around 60–65% CPU and 270 MB RAM by the medium phase.
+
+At the high load stage (100 VUs), resource utilization peaked — CPU usage climbed to roughly 80%, while memory consumption reached about 310 MB, correlating directly with the maximum number of active VUs. This behavior demonstrates the expected linear scalability, where system resource consumption increases proportionally with simulated user load.
+
+Finally, during the cool-down stage, as virtual users ramped down, both CPU and memory usage dropped sharply back to baseline levels (≈30% CPU and ≈200 MB RAM), confirming no residual memory leaks or abnormal resource retention after test completion.
+
+**🧠 Interpretation:**
+
+- The CPU and memory utilization patterns show that the system scaled efficiently with increasing virtual users.
+- The peak values (80% CPU, 310 MB RAM) remained below critical thresholds, indicating adequate processing capacity and resource stability under sustained load.
+- The smooth rise and fall of both curves suggest the load generator and target application maintained consistent performance throughout the test.
+- No irregular spikes or plateauing were observed, implying effective garbage collection and balanced workload distribution.
+
+**Conclusion:**
+
+Overall, the CPU and memory usage trends validate that the scalability test was properly executed and that the system resources were sufficient to handle the 100 VU load without any sign of saturation, bottlenecking, or instability.
+
+<br><br>
+
+### 7.5 Interpretation of Results & Bottlenecks
+
+| **Observation** | **Potential Cause** | **Impact** | **Recommendation** |
+|------------------|----------------------|-------------|---------------------|
+| Increased response time in Grafana Cloud run (≈2.5 s) | Network latency between Grafana Cloud servers and BlazeDemo | Slight delay under higher concurrency | Deploy closer test regions or edge servers to reduce latency. |
+| Minor HTTP request failures | Temporary connection timeouts | Negligible | Implement retry logic in the backend to improve fault tolerance. |
+| High CPU utilization spikes under 500 VUs | Peak concurrent user simulation | May affect throughput at higher scales | Optimize server threading and caching mechanisms. |
+
+<br><br>
+
+### 7.6 Recommendations & Optimization Strategies
+
+1. **Server-Side Optimization:**  
+   Implement caching for frequently accessed resources (e.g., homepage assets) to reduce repeated request load.
+
+2. **Load Balancing:**  
+   Introduce a load balancer or CDN layer to distribute incoming traffic evenly across multiple servers.
+
+3. **Database Connection Pooling:**  
+   Ensure efficient connection management to prevent query bottlenecks during high concurrency.
+
+4. **API Response Optimization:**  
+   Compress payloads and minimize response size to improve network efficiency.
+
+5. **Infrastructure Scaling:**  
+   Use auto-scaling groups to dynamically allocate resources during traffic spikes.
+
+6. **Continuous Monitoring:**  
+   Integrate Grafana dashboards into CI/CD pipelines for ongoing performance visibility.
 
 
 ---
