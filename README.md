@@ -14,6 +14,23 @@
 
 ---
 
+## 📑 Table of Contents
+
+1. [🧩 Introduction](#-1-introduction)
+2. [⚙️ Tool Selection Justification](#️-2-tool-selection-justification)
+3. [📈 Test Type & Justification](#-3-test-type--justification)
+4. [🧬 Test Scenario & Script](#-4-test-scenario--script)
+5. [📊 Results & Analysis](#-5-results--analysis)
+6. [🖥️ CPU & Memory Performance](#️-6-cpu--memory-performance)
+7. [🧠 Interpretation & Discussion](#-7-interpretation--discussion)
+8. [🛠️ Recommendations Based on Industry Best Practices](#️-8-recommendations-based-on-industry-best-practices)
+9. [🏁 Conclusion](#-9-conclusion)
+10. [🎥 Video Demonstration](#-10-video-demonstration)
+11. [📚 References](#-11-references)
+
+
+---
+
 ## 🧩 1. Introduction
 
 
