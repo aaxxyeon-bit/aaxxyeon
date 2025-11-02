@@ -369,13 +369,13 @@ To complement the performance metrics, CPU and memory usage were monitored durin
 The line chart below illustrates the CPU usage trend during the test execution.<br><br>
 
 <p align="center">
-  <a href="https://github.com/aaxxyeon-bit/images/blob/main/Screenshot%202025-11-03%20005936.png?raw=true" target="_blank">
-    <img src="https://github.com/aaxxyeon-bit/images/blob/main/Screenshot%202025-11-03%20005936.png?raw=true" 
-         alt="Grafana Cloud visualization of the scalability test (up to 100 VUs)." 
+  <a href="https://github.com/aaxxyeon-bit/images/blob/main/CPU_CHART.png?raw=true" target="_blank">
+    <img src="https://github.com/aaxxyeon-bit/images/blob/main/CPU_CHART.png?raw=true" 
+         alt="CPU Chart" 
          width="800px"/>
   </a>
   <br/>
-  <sub>Figure 4: Grafana Cloud visualization of the scalability test (up to 100 VUs). — click image to view in full size.</sub>
+  <sub>Figure 5: CPU performance chart showing system resource utilization during scalability test. — click image to view in full size.</sub>
 </p>
 
 
