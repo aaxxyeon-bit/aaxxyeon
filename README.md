@@ -66,7 +66,7 @@ This powerful visualization made it easier to observe system behavior, identify 
 
 ---
 
-## 🧩 Test Type & Justification
+## 🧩 3. Test Type & Justification
 
 
 ### <ins>Selected Test Type: **Scalability Test**</ins>
@@ -83,7 +83,7 @@ and whether the system remains stable, responsive, and efficient as user demand 
 
 ---
 
-## 🧪 3. Test Environment Setup  
+## 🧪 4. Test Environment Setup  
 
 | Component | Description |
 |------------|-------------|
@@ -96,30 +96,70 @@ and whether the system remains stable, responsive, and efficient as user demand 
 
 ---
 
-## 🧬 4. Test Scenario & Script  
+## 🧬 5. Test Scenario
 
-The test script simulates a **scalability test** where virtual users gradually increase to observe the performance stability of BlazeDemo.  
-The stages include: warm-up, small load, medium load, high load, and cool-down.
+The scalability test simulates gradually increasing virtual users (VUs) to evaluate how BlazeDemo handles higher user traffic and maintains performance stability over time.
 
-```javascript
+This test type helps measure how well the system scales, how response time changes as load increases, and at which point performance begins to degrade.
+
+
+
+### 🔹 <ins>Test Scenario Overview</ins>
+
+| **Stage** | **Description** | **Purpose / Reason** |
+|------------|-----------------|-----------------------|
+| **Warm-up** | Starts with a small number of users accessing the website. | Allows caching, server initialization, and resource allocation before the main load begins. |
+| **Small Load** | Simulates light, typical usage conditions. | Confirms system responsiveness under expected user traffic. |
+| **Medium Load** | Gradually increases user traffic. | Tests how performance scales when more users access the site simultaneously. |
+| **High Load** | Pushes the system to upper thresholds (heavy traffic). | Identifies the scalability limit and monitors response time and throughput. |
+| **Cool-down** | Gradual reduction of users after the high load phase. | Checks how efficiently the system recovers after intensive usage. |
+
+<br>
+
+### 🧠 <ins>Why Use Multiple Stages?</ins>
+
+- 📈 **Smooth scaling** — prevents overwhelming the system abruptly.  
+- 📈 **Identifies early bottlenecks** — shows when performance degradation starts.  
+- 📈 **Mimics real-world patterns** — simulates natural traffic growth and decline cycles.  
+- 📈 **Improves reliability analysis** — helps observe how the system behaves before, during, and after peak load.
+
+<br>
+
+## 💻 6. Scalability Test Scripts
+
+Below are two variations of the same scalability test, adjusted for different testing environments.
+
+
+
+### **(A) Local Execution – Up to 500 VUs**
+
+--> This version is executed via the k6 CLI locally.  
+--> There is no enforced VU limit, so it can simulate large-scale testing.
+
+```js
 import http from 'k6/http';
 import { check, sleep, group } from 'k6';
 import { Trend } from 'k6/metrics';
 
+// optional custom metric
 let pageLoadTrend = new Trend('page_load_time_ms');
 
 export let options = {
+  // stages define a ramp-up scalability profile
   stages: [
-    { duration: '2m', target: 10 },   // warm-up
-    { duration: '3m', target: 30 },   // small load
-    { duration: '5m', target: 60 },   // medium load
-    { duration: '5m', target: 100 },  // high load
-    { duration: '3m', target: 0 }     // cool-down
+    { duration: '2m', target: 10 },     // warm-up
+    { duration: '3m', target: 100 },     // small load
+    { duration: '5m', target: 250 },    // medium load
+    { duration: '5m', target: 500 },    // high load (scale up)
+    { duration: '3m', target: 0 }       // scale down
   ],
   thresholds: {
-    'http_req_failed': ['rate<0.05'],       
-    'http_req_duration': ['p(95)<1500']     
+    // example pass/fail thresholds you can later adjust
+    'http_req_failed': ['rate<0.05'],       // <5% errors
+    'http_req_duration': ['p(95)<1500']     // 95% requests < 1500ms
   },
+  // other settings
+  vus: 1
 };
 
 const BASE = 'https://blazedemo.com';
@@ -128,12 +168,76 @@ export default function () {
   group('homepage + search', function () {
     let res1 = http.get(BASE + '/');
     pageLoadTrend.add(res1.timings.duration);
-    check(res1, { 'homepage status 200': (r) => r.status === 200 });
+    check(res1, {
+      'homepage status 200': (r) => r.status === 200,
+    });
     sleep(1 + Math.random() * 2);
 
+    // simulate searching flights => open reserve page
+    // We use a GET to /reserve.php with query params (this mimics selecting a flight)
+    // adjust params if needed after exploring the site manually
     let res2 = http.get(BASE + '/reserve.php?fromPort=Paris&toPort=Buenos%20Aires');
     pageLoadTrend.add(res2.timings.duration);
-    check(res2, { 'reserve page 200': (r) => r.status === 200 });
+    check(res2, {
+      'reserve page 200': (r) => r.status === 200,
+    });
     sleep(Math.random() * 3);
   });
 }
+```
+### **(B) Grafana Cloud Execution – Up to 100 VUs**
+
+--> This version of the scalability test is executed through Grafana Cloud’s k6 platform.  
+--> Grafana Cloud’s free tier limits concurrent virtual users (VUs) to 100, so this script is optimized within that constraint.  
+--> It streams test metrics directly to the Grafana Cloud dashboard for real-time visualization and analysis.
+
+```js
+import http from 'k6/http';
+import { check, sleep, group } from 'k6';
+import { Trend } from 'k6/metrics';
+
+// optional custom metric
+let pageLoadTrend = new Trend('page_load_time_ms');
+
+export let options = {
+  // stages define a ramp-up scalability profile
+  stages: [
+    { duration: '2m', target: 10 },     // warm-up
+    { duration: '3m', target: 30 },     // small load
+    { duration: '5m', target: 60 },    // medium load
+    { duration: '5m', target: 100 },    // high load (scale up)
+    { duration: '3m', target: 0 }       // scale down
+  ],
+  thresholds: {
+    // example pass/fail thresholds you can later adjust
+    'http_req_failed': ['rate<0.05'],       // <5% errors
+    'http_req_duration': ['p(95)<1500']     // 95% requests < 1500ms
+  },
+  // other settings
+  vus: 1
+};
+
+const BASE = 'https://blazedemo.com';
+
+export default function () {
+  group('homepage + search', function () {
+    let res1 = http.get(BASE + '/');
+    pageLoadTrend.add(res1.timings.duration);
+    check(res1, {
+      'homepage status 200': (r) => r.status === 200,
+    });
+    sleep(1 + Math.random() * 2);
+
+    // simulate searching flights => open reserve page
+    // We use a GET to /reserve.php with query params (this mimics selecting a flight)
+    // adjust params if needed after exploring the site manually
+    let res2 = http.get(BASE + '/reserve.php?fromPort=Paris&toPort=Buenos%20Aires');
+    pageLoadTrend.add(res2.timings.duration);
+    check(res2, {
+      'reserve page 200': (r) => r.status === 200,
+    });
+    sleep(Math.random() * 3);
+  });
+}
+```
+
