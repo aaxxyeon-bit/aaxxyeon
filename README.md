@@ -274,16 +274,17 @@ Both tests evaluated BlazeDemo’s performance stability as the number of virtua
 
 **🧠 Analysis**
 
-- The system successfully handled **up to 500 concurrent users** without breaching the performance thresholds.  
-- **Average response time (~396 ms)** and **p(95) response time (~593 ms)** indicate strong backend stability.  
-- **No request failures** were recorded, suggesting excellent server reliability under load.  
-- The increasing **iteration duration** (up to 6 s at the 95th percentile) shows that response time gradually grows as VUs ramp up, but remains acceptable within limits.  
-- This confirms that **BlazeDemo scales effectively** up to 500 users locally.
+- The system successfully handled up to 500 concurrent users without breaching the performance thresholds.  
+- Average response time (~396 ms) and p(95) response time (~593 ms) indicate strong backend stability.  
+- No request failures were recorded so it's suggesting excellent server reliability under load.  
+- The increasing iteration duration (up to 6 s at the 95th percentile) shows that response time gradually grows as VUs ramp up but remains acceptable within limits.  
+- This confirms that BlazeDemo scales effectively up to 500 users locally.
 
 **📷 CLI Execution Output:**
 
 > *(Insert your terminal screenshot here — example below)*  
-> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/k6_terminal_run.png?raw=true)
+> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true)
+> ![CLI Scalability Result](https://github.com/aaxxyeon-bit/images/blob/main/scalability%20500.png?raw=true)
 
 ---
 
