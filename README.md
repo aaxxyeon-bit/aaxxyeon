@@ -449,23 +449,24 @@ Based on the scalability test outcomes and performance analysis, several optimiz
 
 ---
 
-## 🏁 9. Conclusion
+## 🏁 9. Conclusion and Reflection
 
-The scalability testing of **BlazeDemo** using **Grafana k6 CLI and Cloud** successfully demonstrated the system’s ability to maintain consistent performance under increasing load.  
+Throughout this project, executing the scalability test for BlazeDemo using Grafana k6 CLI and Grafana Cloud was a very insightful experience for me. It allowed me to understand how scalability testing works in practice. It's not just from a theoretical perspective but by actually observing how the system reacts under different levels of traffic.
 
-- The **local 500-VU test** validated the upper threshold of system performance, confirming stable response times (p95 < 600 ms) and **zero request failures**.  
-- The **Grafana Cloud 100-VU test**, visualized through real-time dashboards, reinforced the findings with a **peak RPS of 52.83** and a **95th-percentile response time of 2.5 s**, still within acceptable limits.  
-- CPU and memory utilization graphs indicated **proportional scalability** and **no resource saturation**, reflecting efficient system behavior.  
+When I ran the local 500-VU test, I was surprised to see how well the system handled a large number of virtual users without any request failures. It showed me how performance can remain stable even when the load increases significantly as long as the application and infrastructure are properly optimized.  
 
-From an industry perspective, BlazeDemo displayed robust scalability characteristics. However, implementing caching, optimizing database queries, and integrating automated monitoring would further enhance reliability and efficiency.  
+Using Grafana Cloud for the 100-VU test was also interesting because I could see the test results live through visual dashboards. The charts helped me understand metrics such as response time, throughput, and resource utilization more clearly. It made me realize how useful visualization tools are for analyzing performance data and identifying patterns that might not be obvious in raw numbers.
 
-Overall, the experiment confirms that the system can **scale gracefully**, handle growth predictably, and sustain acceptable performance without significant degradation — meeting the objectives of this scalability test.
+From this experience, I learned the importance of proper test planning, interpreting performance metrics correctly, and maintaining consistent monitoring during execution. I also gained confidence in using k6 as a load-testing tool and now have a clearer picture of how scalability testing fits into real-world software performance evaluation.
+
+Overall, this assignment gave me hands-on exposure to real testing practices and helped me appreciate how scalability testing can ensure a system continues to perform reliably as user demand grows.
+
 
 ---
 
 ## 🎥 10. Video Demonstration
 
-📽️ *A walkthrough video of the test setup, execution, and Grafana visualization will be added here.*
+📽️ *A walkthrough video of the test setup, execution, and Grafana visualization.*
 
 **➡️ [Watch the Demonstration Video](https://github.com/aaxxyeon-bit/blazedemo_scalability_test)** 
 
